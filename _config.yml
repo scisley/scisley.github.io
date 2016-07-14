@@ -5,7 +5,8 @@ locale: en_US
 description: "Code, writing, thoughts, and more."
 logo: site-logo.png
 search: true
-url: http://localhost:4000
+#url: http://localhost:4000
+url: https://scisley.github.io/
 
 # Jekyll configuration
 
