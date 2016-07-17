@@ -13,7 +13,7 @@ Hello, my name is Steven Isley and I've got a odd background. I started out as a
 
 Now, I'm a full time employee at NREL, and conducting research in augmented reality, virtual reality, smart home systems, emerging transportation technologies, and online experimental platforms. 
 
-You can reach me at <Steven.Isley@nrel.gov>.
+You can reach me at <steve.c.isley@gmail.com>.
 
 ## Theme Information
 Looking for a simple, responsive, theme for your Jekyll powered blog? Well look no further. Here be **So Simple Theme**, the follow up to [**Minimal Mistakes**](http://mmistakes.github.io/minimal-mistakes) --- by designer slash illustrator [Michael Rose](http://mademistakes.com).
