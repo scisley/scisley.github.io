@@ -5,7 +5,7 @@ date: 2014-03-07 18:37:19.000000000 -07:00
 type: post
 published: true
 status: publish
-categories: []
+categories: articles
 tags:
 - mobile technology
 - privacy
