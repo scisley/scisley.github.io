@@ -7,9 +7,9 @@ published: true
 status: publish
 categories: []
 tags:
-- Mobile Technology
-- Privacy
-- Semantic Web
+- mobile technology
+- privacy
+- semantic web
 ---
 
 This is a paper that I drafted in my spare time that relates to the work I've done with mobile technology and law enforcement. I got to thinking that the method we were using to track information about the various stakeholders and how data are collected and shared could have wider applicability. I've submitted this to a journal, but until I hear back I will leave it here as a post.
