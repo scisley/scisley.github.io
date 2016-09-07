@@ -1,0 +1,50 @@
+#calendar {
+    overflow-y: scroll;
+    padding-left: 0px;
+    height: 600px;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#map {
+    height: 600px;
+}
+
+.my-div-icon {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #666;
+    width: 100px;
+}
+
+#mapHelp {
+    height: 50px;
+    font-size: 12pt;
+}
+
+.activeMarker {
+    font-size: 20pt;
+}
+
+.inactiveMarker {
+    font-size: 10pt;
+}
+
+.warning {
+	background-color: red;	
+}
+
+.arrive, .depart {
+    width: 80px;
+}
+
+.title {
+    width: 60%;
+}
+
+.deleteEvent, .insertEvent {
+    float: right;
+}
+

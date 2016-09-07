@@ -1,0 +1,153 @@
+---
+title: "Leaflet-curves"
+author: "Steven Isley"
+date: "July 23, 2016"
+output: html_document
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(ggplot2)
+require(ggthemes)
+theme_set(theme_gdocs())
+theme_update(plot.background = element_blank()) #, text = element_text(size=14))
+```
+
+## Curved Lines in LeafLet (and Backbone)
+
+I recently ran into a situation where I wanted to disply travel routes on a map for an entire day. This meant most people would enter a 'loop' that went back on itself, i.e. travel from A to B, then from B to A. Trying to put this on a map lead to overlapping lines and a poor user experience. So, I created a method to create curved lines in leaflet. I know there are packages to do this, but none of them met my exact needs, and the coordinate transformations weren't hard. 
+
+This blog post is to describe how I created the curves. I'll show the math behind the process using [R Markdown](http://rmarkdown.rstudio.com/) - my favorite tool for creating reproducible research!)  and then include a  [leaflet](http://leafletjs.com/) demonstration. 
+
+To begin, we have to define a suitable function that is 'the curve' - for simplicity I chose the quadratic function, but you could use anything and the derivation is straight-forward. We'll define the quadratic curve in a local space, the trick is then to transform all the coordinates on the curve to the 'global space' which is our map. This makes the crazy, outlandish, definitely-not-true-but-who-cares-because-it's-just-eye-candy assumption that the earth is flat.
+
+The following equation is a parabola, with minimum at x=0, intersecting the y axis at $\alpha s$ and the x axis at $\pm s$.
+
+$$y = -\frac{\alpha}{s}x^{2}+\alpha s$$
+
+Where $\alpha$ is the ratio of the curve height to $s$, the half-width of the line.
+
+```{r setup, fig.height=2}
+alpha <- 0.5
+s <- 1
+
+x <- seq(-s,s, length.out = 100)
+y = -alpha/s*x^2+alpha*s
+
+ggplot(data.frame(x,y)) + geom_line(aes(x=x, y=y)) + coord_fixed() +
+  ggtitle("Curve in local space") + scale_y_continuous(breaks=c(0,0.25))
+```
+
+If all our lines started and stopped on the same latitude, we'd be done. But, we want to be able to draw curves between any two arbitrary points. We have the points of the curve defined in local space, next we need to translate them to global space. 
+
+```{r}
+p1 <- c(1,1)
+p2 <- c(5,4)
+alpha <- 0.5
+
+theta <- atan2(p2[2] - p1[2], p2[1]-p1[1])
+s     <- sqrt( (p1[1]-p2[1])^2 + (p1[2] - p2[2])^2 ) /2
+xs    <- seq(-s, s, length.out = 100)
+mid   <- (p1+p2)/2
+# This will take a series of x points (in local space), run them through the quadratic equation,
+# and return them rotated into the line defined by p1 and p2.
+transform.points <- function(xs) {
+  d <- as.data.frame(t(sapply(xs, function(x) {
+    y     <- -alpha/s * x^2 + alpha*s  # parabolic curve in 'local' space
+    gamma <- atan2(y, x) 
+    r     <- sqrt( x^2 + y^2 )
+    x_    <- r * cos(gamma + theta) + mid[1]
+    y_    <- r * sin(gamma + theta) + mid[2]
+    c(x_, y_)
+  })))
+  names(d) <- c("x","y")
+  d
+}
+
+# Linear interpolation, used to help with plotting later
+lerp <- function(p.0, p.1, t) {
+  (1-t)*p.0 + t*p.1
+}
+
+points <- transform.points(xs)
+```
+
+It's actually easiest to explain everything with a plot, but the plot requires all the math to be done, so skip over the following code, check out the plot and following explanation, then come back and check out the R code (if you're interested in R code, that is).
+
+```{r}
+# Example point
+xp <- 1.25
+p.example <- transform.points(xp)
+
+# Drop lines from the example point
+d1 <- lerp(mid, points[100,], xp/s)
+d2 <- lerp(mid, transform.points(0), -alpha/s * xp^2 + alpha*s / (alpha*s) )
+local.drops <- data.frame(x1=c(p.example[1,1], p.example[1,1]), x2=c(d1[1,1], d2[1,1]), 
+                          y1=c(p.example[1,2], p.example[1,2]), y2=c(d1[1,2], d2[1,2]))
+
+global.drops <- data.frame(x1=c(p.example[1,"x"], mid[1]), x2=c(p.example[1,"x"], p.example[1,"x"]), 
+                           y1=c(p.example[1,"y"], p.example[1,"y"]), y2=c(mid[2], p.example[1,"y"]))
+
+drops <- rbind(local.drops, global.drops)
+# Rotated axis
+#rx.2 <- c(mid[1], d1[1,"y"])#lerp(mid, as.numeric(points[nrow(points),]), 0.6)
+#ry.2 <- as.matrix(transform.points(0))
+#ry.2 <- c(mid[1], d1[1,1]) #lerp(mid, ry.2, 1.5)
+# Global axis
+global.axis <- data.frame(x1=c(0,0), x2=c(5,0), 
+                          y1=c(0,0), y2=c(0,5))
+
+# Shifted axis
+shifted.axis <- data.frame(x1=c(mid[1], mid[1]), x2=c(p.example[1,"x"], mid[1]), 
+                           y1=c(mid[2], mid[2]), y2=c(mid[2], p.example[1,"y"]))
+
+rotated.axis <- data.frame(x1=c(mid[1],mid[1]), x2=c(d1[1,"x"],d2[1,"x"]), 
+                           y1=c(mid[2],mid[2]), y2=c(d1[1,"y"],d1[1,"y"]))
+
+axes <- rbind(global.axis, shifted.axis, rotated.axis)
+
+display.points <- rbind(p.example, points[1,], points[100,])
+display.points$label <- c("P*","P1","P2")
+my.arrow <- arrow(length = unit(0.2,"cm"), type="closed")
+ggplot(points) + geom_line(aes(x,y), linetype = 2, color="grey50") +
+  # Add local, global, and rotated coordinate axes
+  geom_segment(data=axes, mapping=aes(x=x1, xend=x2, y=y1, yend=y2), arrow = my.arrow) +
+  # Add lobal and global drops from p*
+  geom_segment(data=drops, mapping = aes(x=x1, xend=x2, y=y1, yend=y2), linetype=2) +
+  # Ray to example point
+  geom_segment(data=data.frame(x1=mid[1], x2=p.example[1,1], y1=mid[2], y2=p.example[1,2]), 
+               mapping = aes(x=x1, xend=x2, y=y1, yend=y2), arrow = my.arrow) +
+  # Example and end points
+  geom_point(data=display.points, aes(x, y), size=3) +
+  geom_text(data=display.points, aes(x=x, y=y, label=label), nudge_x=0.2, nudge_y=0.15) +
+  # Add some math symbols
+  annotate("text", x=mid[1]+0.3, y=mid[2]+0.12, label="theta", parse=TRUE) +
+  annotate("text", x=mid[1]+0.2, y=mid[2]+0.35, label="gamma", parse=TRUE) +
+  annotate("text", x=2.35, y=3.1, label="y[l]", parse=TRUE) +
+  annotate("text", x=4, y=3.05, label="x[l]", parse=TRUE) +
+  annotate("text", x=2.8, y=2.45, label="tilde(O)", parse=TRUE) +
+  annotate("text", x=2.85, y=4.05, label="y[g]", parse=TRUE) +
+  annotate("text", x=3.5, y=2.3, label="x[g]", parse=TRUE) +
+  coord_fixed()
+
+```
+
+Alright, so now we've got a plot to work with. Basically, all we need to do is for each point, calculate $\widetilde{x}$ and $\widetilde{y}$ relative to the shifted origin $\widetilde{O}$, then translate the points to the global coordinates. 
+
+Recall our local-coordinates quadratic curve:
+
+$$y = -\frac{\alpha}{s}x^{2}+\alpha s$$
+
+$\widetilde{O}$ is the origin of this coordinate system. $\theta$ is the angle between the local and global coordinate x axes. It is fixed for all points on the curve and given by:
+
+$$\theta=\tan^{-1} \frac{p_{1,y}-p_{2,y}}{p_{1,x}-p_{2,x}}$$
+
+We'll also need the total distance between $p_1$ and $p_2$, which is just the euclidean distance:
+
+$$s = \sqrt{\left (p_{1,x}-p_{2,x}  \right )^2 + \left (p_{1,y}-p_{2,y}  \right )^2}$$
+
+Now, we choose how many points we want along our curve, for simplicity I've used 100 above. So inside a loop, first calculate your $x$
+
+$$x = -s + len/c*i$$
+
+

@@ -30,3 +30,18 @@ To learn how to install and use this theme check out the [Setup Guide](http://mm
 ## My Notes
 
 So, I need to learn more about the Jekyll build process. Right now, I have to change the site url in order to test locally vs deploy to github. That isn't ideal. Also, I don't have a .gitignore file, whichI should probably have since there's a ton that doesn't need to be checked into the repo.
+
+## Post Ideas
+
+* AMT in general. Show plot of where my turkers are from. Dig up that online article I was quoted in.
+* PNAS paper (could make several posts on this). Might need to wait until after the article is published.
+* EE Display research. Show plot of effectiveness of different methods.
+* Retrospective Mobility research. Show screenshot of tool.
+* BPA white paper.
+* Dissertation
+* Notice of Proposed Rulemaking paper
+* How a carbon tax can increase profitability of a firm
+* Arc in leaflet map
+
+
+To start: bundle exec jekyll serve

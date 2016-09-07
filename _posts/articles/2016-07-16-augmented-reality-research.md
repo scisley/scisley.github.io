@@ -4,6 +4,9 @@ title: Augmented Reality Research
 date: 2016-07-16 03:17:21.000000000 -07:00
 type: post
 categories: articles
+summary:
+  thumb: /images/thumbs/ar-app-small.jpg
+  desc:  Augmented Reality Research
 tags:
 - programming
 - mobile technology
@@ -11,6 +14,8 @@ tags:
 ---
 
 I remember reading a scifi short story once ([Analog](https://www.analogsf.com) I believe, but I've searched and can't find the original story) about an implant that would help people make decisions. In the story, a guy goes to the grocery store to buy a bag of rice, and the implant overlays information about the dozens of options available to him. It puts red x's over the bags that don't meet one of his criteria, one after another, then when it get's down to the last couple bags he chooses one made by a company that supports a cause he cares about.
+
+![Augmented Reality App In-Use]({{ site.baseurl }}/images/ar-app-med.jpg) 
 
 I remember reading that story and thinking, "man, that would be cool," and lucky enough for me my job at NREL has actually allowed me to do research in that direction! I'm in a group called the New Concepts Incubator and we take ideas about technology, behavioral science, and ways to save energy, and then we test them with real people. I pitched a crazy idea to my boss - why not use augmented reality to show people information about the products they buy and help them make better choices. Not better defined by me, or my boss, or NREL, but by themselves. 
 

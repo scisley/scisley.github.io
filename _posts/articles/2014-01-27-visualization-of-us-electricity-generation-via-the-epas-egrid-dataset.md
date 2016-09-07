@@ -5,12 +5,17 @@ date: 2014-01-27 21:59:27.000000000 -07:00
 type: post
 categories: articles
 share: true
+summary:
+  thumb: /images/thumbs/grid-map.png
+  desc:  US Electric Grid Visualization
 tags:
 - data visualization
 - energy
 ---
 
-I've been using the data visualization software package called Tableau for a while now. It is really a fantastic product, with lots of online tutorials and help. It even has a [free one-year student edition!](http://www.tableausoftware.com/academic/students) Below is my attempt to show how power is generated in the United States. The data comes from the EPA's [eGRID](http://www.epa.gov/cleanenergy/energy-resources/egrid/index.html) data set, with 2009 being the most recent data. It is a geographic bubble chart with the amount of energy produced at each plant represented by its size, and the fuel source for that energy by the bubble's color. I've used some transparency to help with the overplotting. Even so, many points close together are hard to distinguish. I added a dark border to each bubble to help with that.
+Here is my attempt to show how power is generated in the United States. The data comes from the EPA's [eGRID](http://www.epa.gov/cleanenergy/energy-resources/egrid/index.html) data set, with 2009 being the most recent data. It is a geographic bubble chart with the amount of energy produced at each plant represented by its size, and the fuel source for that energy by the bubble's color. I've used some transparency to help with the overplotting. Even so, many points close together are hard to distinguish. I added a dark border to each bubble to help with that.  
+
+I've been using the data visualization software package called Tableau for a while now. It is really a fantastic product, with lots of online tutorials and help. It even has a [free one-year student edition!](http://www.tableausoftware.com/academic/students) 
 
 ![eGRID Annual Net Generation Data by Fuel Type]({{ site.baseurl }}/assets/egrid-annual-net-generation-data-by-fuel-type1.png)
 

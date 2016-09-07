@@ -4,6 +4,9 @@ title: Derivatives in Apache Math Commons Post Version 3.0
 date: 2014-02-16 03:17:21.000000000 -07:00
 type: post
 categories: articles
+summary:
+  thumb: /images/thumbs/derivative.png
+  desc:  Apache Math Derivatives
 tags:
 - programming
 ---

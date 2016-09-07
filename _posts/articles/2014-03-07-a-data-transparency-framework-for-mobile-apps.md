@@ -6,6 +6,9 @@ type: post
 published: true
 status: publish
 categories: articles
+summary:
+  thumb: /images/thumbs/app-privacy.jpg # https://www.youtube.com/watch?v=Jtac7P5e-14 (found via google image search with 're-use' license.)
+  desc:  Mobile privacy
 tags:
 - mobile technology
 - privacy

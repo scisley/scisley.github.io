@@ -1,0 +1,114 @@
+---
+layout: post
+title: Curved Lines in Leaflet
+date: 2016-07-20 03:17:21.000000000 -07:00
+type: post
+categories: articles
+summary:
+  thumb: /images/thumbs/ar-app-small.jpg
+  desc:  Curved Lines in Leaflet
+tags:
+- programming
+custom_js:
+- /assets/custom/leaflet_curve/leaflet_curve.js
+- /assets/js/vendor/leaflet/leaflet.js
+- /assets/js/vendor/underscore-min.js
+- /assets/js/vendor/backbone-min.js
+- /assets/js/vendor/Leaflet.label/leaflet.label.js
+custom_css:
+- /assets/custom/leaflet_curve/leaflet_curve.css
+- /assets/js/vendor/leaflet/leaflet.css
+- /assets/js/vendor/Leaflet.label/leaflet.label.css
+---
+
+<div class="container">
+  <div id="mapHelp" class="row col-md-12">
+    Zoom in to where you spend the majority of your day. Then, double-click
+    to add a location. Continue adding locations until you've added all
+    the places you travel to on a typical day.
+  </div>
+  <div class="row">
+
+    <div id="mapPane" class="col-md-8">
+      <div id="map"></div>
+    </div>
+      
+    <div id="calendar" class="col-md-4"></div>
+  </div>
+</div>
+
+<!-- Template for the entry boxes on the side -->
+<script id="calendar-entry-template" type="text/x-template"><div/>
+  <div class="modeBox">
+    Travel Mode:    
+    <select name="modeSelect" class="modeSelect">
+      <option value="unset">not specified</option>
+      <option value="walk">Walk</option>
+      <option value="bike">Bike</option>
+      <option value="car">Private Car</option>
+      <option value="bus">Bus</option>
+      <option value="train">Train</option>
+    </select>
+    <hr>
+  </div>
+  
+  <div>Title:
+    <input type="text" class="title" name="title" value="<%=title%>">
+    <button class="deleteEvent" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+    </button>
+  </div>
+  <div class="latlng"></div>
+  
+  <!-- Table for the main event details -->
+  <div>
+    Arrive:
+    <input name="arrive" class="arrive" value="<%=arrive%>">
+
+     Depart:
+    <input name="depart" class="depart" value="<%=depart%>">
+  </div>
+  
+  <!-- Table for the constraints and insert button -->
+  <table style="width:100%">
+  <tr>
+    <td colwidth=20%>
+      <img style="height:20px" src="/images/leaflet_curves/baggage.gif" 
+        data-toggle="tooltip"
+        title="Select this option if you must carry baggage to this event that you couldn't walk or bike with."/>
+      <input type="checkbox" class="baggage">
+    </td>
+
+    <td colwidth=20%>
+      <img style="height:20px" src="/images/leaflet_curves/carseat.gif"
+        data-toggle="tooltip"
+        title="Select this option if you must bring small children to this event that require a car seat."/>
+      <input type="checkbox" class="carseat"> 
+    </td>
+
+    <td colwidth=20%>
+      <img style="height:20px" src="/images/leaflet_curves/suit.gif"
+        data-toggle="tooltip"
+        title="Select this if you must arrive professional looking, i.e. you can't walk or bike much before this event."/>
+      <input type="checkbox" class="professional">
+    </td>
+    
+    <td colwidth=20%>
+      <img style="height:20px" src="/images/leaflet_curves/passengers.gif"
+        data-toggle="tooltip"
+        title="Select this if you must bring passengers with you to this event"/>
+      <input type="checkbox" class="passengers">
+    </td>
+    <td colwidth=20%>
+      <button class="insertEvent" type="button" class="btn btn-default btn-sm"
+        data-toggle="tooltip"
+        title="Click to insert a new event between this one and the next one.">
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> 
+      </button>
+    </td>
+  </tr>
+  </table>
+  
+  <hr>
+
+</script>
