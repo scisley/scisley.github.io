@@ -19,7 +19,8 @@ This is a paper that I drafted in my spare time that relates to the work I've do
 
 <i>Abstract</i>— In today’s mobile application marketplace, the ability of consumers to make informed choices regarding their privacy is extremely limited. Consumers largely rely on privacy policies and app permission mechanisms, but these do an inadequate job of conveying how information will be collected, used, stored, and shared. Mobile application developers go largely unrewarded for making apps more privacy conscious as it is difficult to communicate these features to consumers while they are searching for a new app. This paper provides an overview of a framework designed to help consumers make informed choices, and an incentive mechanism to encourage app developers to implement it. This framework includes machine readable privacy policies encouraged by mobile app stores and enhanced by user software agents. Such a framework would provide the foundation required for more advanced forms of privacy management to develop.
 
-#I. INTRODUCTION
+# I. INTRODUCTION
+
 Privacy is increasingly a concern in today’s digitally connected world. Information about people, much of it private, is being collected and stored in an ever increasing number of ways and places. An individual’s relationships used to be known by a small group; now that same information is stored on their phone, by their cellular service provider, multiple social networks, email providers, gaming platforms, and an array of mobile applications residing on their smartphone or tablet.
 
 This last category, the apps on their smartphone or tablet, are the focus of this paper. Mobile devices are particularly concerning from a privacy point of view as they are carried with people on a daily basis and can be used to collect and transmit information at fine geographic and temporal resolutions. This enhanced data environment enables many new and useful functions but comes with a concomitant rise in the risk of privacy failures.
@@ -30,7 +31,7 @@ This paper will argue for a data transparency framework that includes machine re
 
 Part one describes the mobile application privacy status quo and recent work on implementing machine readable privacy policies. Part two focuses on how mobile app stores could implement such programs (and indeed are in a unique position to do so). Part three explores how user agents can augment the services provided by app stores and help users make and maintain informed decisions.
 
-#II. Privacy in Mobile Applications
+# II. Privacy in Mobile Applications
 
 Before discussing mobile applications, it is worth defining what is meant by privacy. A general conception of privacy is hard to come by, with Daniel Solove on page one of his book, Understanding Privacy, going so far as to say that nobody can articulate what it means [1]. While this paper is not intended to argue the merits of privacy, I will limit my discussion of privacy to mean the rights of individuals to control the collection, use and dissemination of their personal information.
 
@@ -60,7 +61,7 @@ These statements are extraordinarily vague, but typical of privacy policies, not
 
 After reading a few privacy policies, one can easily see how time consuming it would be to read through, analyze, and incorporate the information from them into a decision concerning which of 30 exercise apps to choose, or 25 personal finance apps.
 
-##B. App Permissions
+## B. App Permissions
 
 Both Android and iOS include permission mechanisms to limit access to personal information from mobile apps. Android uses a system of install-time warnings where users are presented with a list of required permissions and must accept them or forgo installing the app. Apple’s iOS uses a combination of runtime confirmation dialogs and review screens. The runtime confirmation dialogues appear the first time an app requests a particular permission, like access to location information, and users can deny the request and continue using the app. A review screen is displayed by iOS before certain actions, like sending a text message, allowing the user to see which application is trying to send it and giving them the opportunity to edit or dismiss the text.
 

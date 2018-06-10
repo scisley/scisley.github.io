@@ -29,7 +29,7 @@ To learn how to install and use this theme check out the [Setup Guide](http://mm
 
 ## My Notes
 
-So, I need to learn more about the Jekyll build process. Right now, I have to change the site url in order to test locally vs deploy to github. That isn't ideal. Also, I don't have a .gitignore file, whichI should probably have since there's a ton that doesn't need to be checked into the repo.
+So, I need to learn more about the Jekyll build process. Right now, I have to change the site url in order to test locally vs deploy to github. That isn't ideal. Also, I don't have a .gitignore file, which I should probably have since there's a ton that doesn't need to be checked into the repo.
 
 ## Post Ideas
 

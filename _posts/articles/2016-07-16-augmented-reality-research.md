@@ -10,7 +10,8 @@ summary:
 tags:
 - programming
 - mobile technology
-- data visualization
+- augmented reality
+- research
 ---
 
 I remember reading a scifi short story once ([Analog](https://www.analogsf.com) I believe, but I've searched and can't find the original story) about an implant that would help people make decisions. In the story, a guy goes to the grocery store to buy a bag of rice, and the implant overlays information about the dozens of options available to him. It puts red x's over the bags that don't meet one of his criteria, one after another, then when it get's down to the last couple bags he chooses one made by a company that supports a cause he cares about.
@@ -23,7 +24,7 @@ My boss gave me the go-ahead and about three months later (and many sleepless ni
 
 <iframe width="420" height="315" src="https://www.youtube.com/embed/aHQqCL27b4U" frameborder="0" allowfullscreen></iframe>
 
-I think the results are pretty good. You can see in the video that it correctly identifies most cereal boxes, and that the tracking acceptable in most cases. The video may look a bit grainy, but it is a video capture of a Nexus 6 smartphone, so it actually looked quite sharp when viewed on that small screen, and there was no noticable delay in the video. 
+I think the results are pretty good. You can see in the video that it correctly identifies most cereal boxes, and that the tracking is acceptable in most cases. The video may look a bit grainy, but it is a video capture of a Nexus 6 smartphone, so it actually looked quite sharp when viewed on that small screen, and there was no noticable delay in the video. 
 
 Once I had the app finished, I designed and oversaw a randomized controlled trial at a nearby grocery store (not a specialty foods store, but a large national chain grocery store). We had people buy bottled water and cereal, and randomly assigned to use the app for only one of the purchases. That way we had a control group that bought a product without the app to compare the with-app results to. The results we got were interesting. I work at NREL, so we made sure that everybody saw carbon footprint information in addition to the product attributes they said they cared about during the intro survey. For the bottled water, those with the app ended up buying products with an average carbon footprint a full 25% less than those without the app! This is a pretty huge change in this type of research.
 
@@ -34,3 +35,5 @@ The beauty of augmented reality, compared to informational posters or 'seal of a
 I wish I could find that short story again. I'd contact the author and let him know his story, written over a decade ago, inspired some dude he'd never met to do research in a place he's probably never heard of.
 
 (I've written a journal article on the research, and it's currently in review. I'll update this with a link when it gets published.)
+
+Update: The journal article got published! The academic publishing system is insane, but that's a post/rant for another day. Here's the Environmental Research Letters [article](http://iopscience.iop.org/article/10.1088/1748-9326/aa6def/meta), title "Using augmented reality to inform consumer choice and lower carbon footprints."
