@@ -19,7 +19,7 @@ I recently got interested in the work of James Hansen. Some of his work appeared
 Overview
 ========
 
-To start with, I had to learn about publicly available climate data. The best source I foud is actually data from [Berkeley Earth](http://berkeleyearth.org/data/). This is the group originally funded in part by the Koch Brothers. Climate skeptics had hoped their results would show the scientific consensus was wrong but it ended up confirming everything the scientific community had been saying. Plus, the world got a fantastic set of cleaned data made freely available. At the Berkeley Earth link above, choose the "Breakpoint Adjusted Monthly Station data" as it's the most relevant for this analysis.
+To start with, I had to learn about publicly available climate data. The best source I found is actually data from [Berkeley Earth](http://berkeleyearth.org/data/). This is the group originally funded in part by the Koch brothers. Climate skeptics had hoped their results would show the scientific consensus was wrong but it ended up confirming everything the scientific community had been saying. Plus, the world got a fantastic set of cleaned data made freely available. At the Berkeley Earth link above, choose the "Breakpoint Adjusted Monthly Station data" as it's the most relevant for this analysis.
 
 The code below imports the data and provides some nicer column names.
 
@@ -44,14 +44,11 @@ sites <- read.delim(file="./LATEST - Breakpoint Corrected/site_detail.txt",
                                  "SuggestedRelocations", "NumSources", "Hash"))
 ```
 
-    ## Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-    ## dec, : EOF within quoted string
-
 The next chunk of code does all the heavy lifting. I love the `dplyr` package by Hadley Wickham. It's part of the larger [Tidyverse](https://www.tidyverse.org/) universe, and I highly recommend it for any aspiring R coders out there. It makes this job way easier than it has any right to be!
 
 The code below is commented, but in general, it does the following:
 
-1.  Extract the year and month from the data. Berkeley Earth uses a strange date format that corresponds to fraction of a year.
+1.  Extract the year and month from the date. Berkeley Earth uses a strange date format that corresponds to fraction of a year.
 2.  Create a variable to hold the time period. For the NYT article, the baseline period was 1950-1980. After that, I just go by decade.
 3.  Using just the summer months of June, July, and August, calculate the average temperature.
 4.  For each station, calculate the mean and standard deviation temperature for the baseline period.
