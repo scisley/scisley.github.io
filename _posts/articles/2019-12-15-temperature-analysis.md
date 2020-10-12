@@ -99,7 +99,7 @@ all.std <- d %>%
   ungroup()
 ```
 
-Now, let's just look at the baseline period and the most recent decade. I've added vertical ines for the temperature ranges. Just like in the NYT articles, the most recent decade is shifted right (hotter on average), and the distribution is more spread out. This chart is for the northern hemisphere only (to match the NYT article), but the results look similar for all data.
+Now, let's just look at the baseline period and the most recent decade. I've added vertical lines for the temperature ranges. Just like in the NYT articles, the most recent decade is shifted right (hotter on average), and the distribution is more spread out. This chart is for the northern hemisphere only (to match the NYT article), but the results look similar for all data.
 
 ``` r
 all.std %>%
