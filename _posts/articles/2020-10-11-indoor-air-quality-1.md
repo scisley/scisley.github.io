@@ -5,18 +5,20 @@ date: 2020-10-11 11:59:21.000000000 -07:00
 type: post
 categories: articles
 summary:
-  thumb: /images/thumbs/temperature.png
+  thumb: /images/thumbs/master_room-1.png
   desc:  Global temperature histograms
 tags:
 - programming
 - data visualization
 - R
-- climate change
+- indoor air quality
 ---
 
-# Overview
 
 Indoor air quality monitoring is becoming a hobby of mine. I find it fascinating that so much of our health could be impacted by something that is completely invisible (in many senses of the word) to us. I recently decided to purchase an [Airthings Wave Plus](https://www.airthings.com/wave-plus). It monitors CO2, temperature, humidity, air pressure, TVOC (total volatile organic compounds) and radon. So far I haven't been disappointed! It's a fantastic sensor, the dashboard allows me to easily pull the data and explore it on my own, and the readings overall make sense.
+
+Overview
+========
 
 This blog post is about the CO2 levels in various parts of my house. The device is battery operated, and it's easy to move from place to place, so I put in my wife and mine's bedroom to start, then my office, then my twin girls' room. I'll focus on CO2 levels for this post. High levels of CO2 can reduce cognitive ability and lower quality sleep. 
 
