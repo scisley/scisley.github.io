@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // TYPOGRAPHY ================================================
 $base-font: 'source-sans-pro', sans-serif;
 $heading-font: $base-font;
@@ -32,10 +34,10 @@ $link-color         : #222;
 $table-border-color           : $border-color;
 $table-border                 : 1px solid $table-border-color;
 $table-background             : $body-color;
-$table-header-color           : lighten($table-background, 10);
-$table-hover-color            : darken($table-background, 2);
-$table-stripe-color           : darken($table-background, 4);
-$table-stripe-color-hover     : darken($table-stripe-color, 5);
+$table-header-color           : color.adjust($table-background, $lightness: 10%);
+$table-hover-color            : color.adjust($table-background, $lightness: -2%);
+$table-stripe-color           : color.adjust($table-background, $lightness: -4%);
+$table-stripe-color-hover     : color.adjust($table-stripe-color, $lightness: -5%);
 
 
 // MEDIA QUERIES ==============================================

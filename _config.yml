@@ -16,6 +16,7 @@ highlighter: rouge
 sass:
   sass_dir: _sass
   style: compressed
+  quiet_deps: true
 plugins:
   - jekyll-sitemap
   - jekyll-gist
