@@ -1,10 +1,10 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 3.8"
-gem "jekyll-sitemap"
-gem "jekyll-gist"
-gem "octopress"
+ruby ">= 3.2.0"
 
-require 'json'
-require 'open-uri'
-versions = JSON.parse(open('https://pages.github.com/versions.json').read)
+gem "jekyll", "~> 4.3"
+gem "jekyll-sitemap", "~> 1.4"
+gem "jekyll-gist", "~> 1.5"
+gem "jekyll-compose", "~> 0.12"
+gem "webrick", "~> 1.8"
+gem "sass-embedded", "~> 1.77", "< 1.80"
