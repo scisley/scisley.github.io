@@ -5,6 +5,7 @@ _site/
 .bundle/
 vendor/bundle/
 node_modules/
+assets/js/scripts.min.js
 coverage/
 tmp/
 .DS_Store
